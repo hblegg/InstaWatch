@@ -132,8 +132,11 @@
     toolbar.frame = CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44);
     UIBarButtonItem *button1 = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleDone target:self action:@selector(login)];
 
+    UIBarButtonItem *button2 = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleDone target:self action:@selector(logout)];
+
     NSMutableArray *items = [[NSMutableArray alloc] init];
     [items addObject:button1];
+    [items addObject:button2];
     [toolbar setItems:items animated:NO];
     [self.view addSubview:toolbar];
 }
@@ -144,6 +147,12 @@
     LoginViewController *login = [[LoginViewController alloc] init];
     login.collectionViewController = self;
     [self presentViewController:login animated:YES completion:nil];
+}
+
+-(void) logout
+{
+    [[InstagramEngine sharedEngine] logout];
+    NSLog(@"logging out");
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

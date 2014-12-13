@@ -106,7 +106,10 @@ static double const kLMSpringboardItemViewSmallThreshold = 0.75;
   _visualEffectMaskView.center = _icon.center;
   _visualEffectMaskView.bounds = _icon.bounds;
   
-  [_label sizeToFit];
+    _label.lineBreakMode = NSLineBreakByWordWrapping;
+    _label.numberOfLines = 2;
+   // [_label sizeToFit];
+    
   _label.center = CGPointMake(size.width*0.5, size.height+4);
 
   float scale = 60/size.width;
@@ -122,6 +125,8 @@ static double const kLMSpringboardItemViewSmallThreshold = 0.75;
     _scale = 1;
     
     _label = [[UILabel alloc] init];
+      _label.frame = CGRectMake(0, 30, 100, 50);
+      _label.textAlignment = NSTextAlignmentCenter;
     _label.opaque = NO;
     _label.backgroundColor = nil;
     _label.textColor = [UIColor whiteColor];

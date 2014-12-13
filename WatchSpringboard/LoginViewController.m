@@ -25,6 +25,8 @@
     self.mWebView.contentMode = UIViewContentModeScaleAspectFit;
     self.mWebView.delegate = self;
     
+    self.mWebView.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height);
+    
     self.scope = IKLoginScopeRelationships | IKLoginScopeComments | IKLoginScopeLikes;
     
     NSDictionary *configuration = [InstagramEngine sharedEngineConfiguration];
@@ -43,6 +45,11 @@
 - (IBAction)onCancelLogin:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    //webView.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height);
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
