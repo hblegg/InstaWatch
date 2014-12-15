@@ -28,6 +28,10 @@
 		29AD937F1A3A5BFB0020E22A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD93751A3A5BFB0020E22A /* UIImageView+AFNetworking.m */; };
 		29AD93881A3A72930020E22A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD93861A3A72930020E22A /* LoginViewController.m */; };
 		29AD93891A3A72930020E22A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AD93871A3A72930020E22A /* LoginViewController.xib */; };
+		29AD94161A3E79A80020E22A /* IGFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD94141A3E79A80020E22A /* IGFeedViewController.m */; };
+		29AD94171A3E79A80020E22A /* IGFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AD94151A3E79A80020E22A /* IGFeedViewController.xib */; };
+		29AD941B1A3E7B5D0020E22A /* IGCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD94191A3E7B5D0020E22A /* IGCollectionViewCell.m */; };
+		29AD941C1A3E7B5D0020E22A /* IGCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AD941A1A3E7B5D0020E22A /* IGCollectionViewCell.xib */; };
 		5BBFA54B1A32DC040017D00E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BBFA54A1A32DC040017D00E /* Media.xcassets */; };
 		5BBFA54D1A32DC540017D00E /* KailuaSunrise2012.960.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BBFA54C1A32DC540017D00E /* KailuaSunrise2012.960.png */; };
 		A069C6CB19FC5AAE00E7E6D5 /* Icon-34@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A069C6CA19FC5AAD00E7E6D5 /* Icon-34@2x.png */; };
@@ -135,6 +139,12 @@
 		29AD93851A3A72930020E22A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		29AD93861A3A72930020E22A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		29AD93871A3A72930020E22A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		29AD94131A3E79A80020E22A /* IGFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFeedViewController.h; sourceTree = "<group>"; };
+		29AD94141A3E79A80020E22A /* IGFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGFeedViewController.m; sourceTree = "<group>"; };
+		29AD94151A3E79A80020E22A /* IGFeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IGFeedViewController.xib; sourceTree = "<group>"; };
+		29AD94181A3E7B5D0020E22A /* IGCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCollectionViewCell.h; sourceTree = "<group>"; };
+		29AD94191A3E7B5D0020E22A /* IGCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGCollectionViewCell.m; sourceTree = "<group>"; };
+		29AD941A1A3E7B5D0020E22A /* IGCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IGCollectionViewCell.xib; sourceTree = "<group>"; };
 		5BBFA54A1A32DC040017D00E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		5BBFA54C1A32DC540017D00E /* KailuaSunrise2012.960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KailuaSunrise2012.960.png; sourceTree = "<group>"; };
 		A069C6CA19FC5AAD00E7E6D5 /* Icon-34@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-34@2x.png"; sourceTree = "<group>"; };
@@ -322,6 +332,12 @@
 				A089811219FAF4EC00034E0B /* LMViewControllerView.m */,
 				29AD93851A3A72930020E22A /* LoginViewController.h */,
 				29AD93861A3A72930020E22A /* LoginViewController.m */,
+				29AD94131A3E79A80020E22A /* IGFeedViewController.h */,
+				29AD94141A3E79A80020E22A /* IGFeedViewController.m */,
+				29AD94151A3E79A80020E22A /* IGFeedViewController.xib */,
+				29AD94181A3E7B5D0020E22A /* IGCollectionViewCell.h */,
+				29AD94191A3E7B5D0020E22A /* IGCollectionViewCell.m */,
+				29AD941A1A3E7B5D0020E22A /* IGCollectionViewCell.xib */,
 				29AD93871A3A72930020E22A /* LoginViewController.xib */,
 				A073BBBF19F9C7AB0068D6A6 /* Main.storyboard */,
 				A073BBC219F9C7AB0068D6A6 /* Images.xcassets */,
@@ -539,12 +555,14 @@
 				A089815819FAFC7900034E0B /* Icon-9@2x.png in Resources */,
 				A089814D19FAFC7900034E0B /* Icon-2@2x.png in Resources */,
 				A089814819FAFC7900034E0B /* Icon-25@2x.png in Resources */,
+				29AD941C1A3E7B5D0020E22A /* IGCollectionViewCell.xib in Resources */,
 				A089815619FAFC7900034E0B /* Icon-7@2x.png in Resources */,
 				29AD93891A3A72930020E22A /* LoginViewController.xib in Resources */,
 				A089813F19FAFC7900034E0B /* Icon-17@2x.png in Resources */,
 				A089813819FAFC7900034E0B /* Icon-10@2x.png in Resources */,
 				A089815219FAFC7900034E0B /* Icon-3@2x.png in Resources */,
 				A089815119FAFC7900034E0B /* Icon-33@2x.png in Resources */,
+				29AD94171A3E79A80020E22A /* IGFeedViewController.xib in Resources */,
 				A069C6CB19FC5AAE00E7E6D5 /* Icon-34@2x.png in Resources */,
 				A089815419FAFC7900034E0B /* Icon-5@2x.png in Resources */,
 				A089814C19FAFC7900034E0B /* Icon-29@2x.png in Resources */,
@@ -567,6 +585,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29AD94161A3E79A80020E22A /* IGFeedViewController.m in Sources */,
 				29AD937E1A3A5BFB0020E22A /* AFURLSessionManager.m in Sources */,
 				29AD937F1A3A5BFB0020E22A /* UIImageView+AFNetworking.m in Sources */,
 				29AD937B1A3A5BFB0020E22A /* AFURLConnectionOperation.m in Sources */,
@@ -590,6 +609,7 @@
 				29AD935B1A3A5B060020E22A /* InstagramMedia.m in Sources */,
 				A073BBBB19F9C7AB0068D6A6 /* AppDelegate.m in Sources */,
 				A073BBB819F9C7AB0068D6A6 /* main.m in Sources */,
+				29AD941B1A3E7B5D0020E22A /* IGCollectionViewCell.m in Sources */,
 				29AD937C1A3A5BFB0020E22A /* AFURLRequestSerialization.m in Sources */,
 				29AD93761A3A5BFB0020E22A /* AFHTTPRequestOperation.m in Sources */,
 				29AD937D1A3A5BFB0020E22A /* AFURLResponseSerialization.m in Sources */,

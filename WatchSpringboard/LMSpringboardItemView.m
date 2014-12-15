@@ -47,7 +47,7 @@ static double const kLMSpringboardItemViewSmallThreshold = 0.75;
       [self insertSubview:_visualEffectView atIndex:0];
       
       _visualEffectMaskView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Icon.png"]];
-      _visualEffectMaskView.contentMode = UIViewContentModeScaleAspectFit;
+        _visualEffectMaskView.contentMode = UIViewContentModeScaleAspectFit;
       _visualEffectMaskView.autoresizingMask = vev.autoresizingMask;
       _visualEffectView.maskView = _visualEffectMaskView;
     }
@@ -98,6 +98,7 @@ static double const kLMSpringboardItemViewSmallThreshold = 0.75;
   
   CGSize size = self.bounds.size;
   
+    
   _icon.center = CGPointMake(size.width*0.5, size.height*0.5);
   _icon.bounds = CGRectMake(0, 0, size.width, size.height);
   
@@ -122,7 +123,7 @@ static double const kLMSpringboardItemViewSmallThreshold = 0.75;
   self = [super init];
   if(self)
   {
-    _scale = 1;
+    _scale = 3;
     
     _label = [[UILabel alloc] init];
       _label.frame = CGRectMake(0, 30, 100, 50);

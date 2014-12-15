@@ -12,6 +12,8 @@
 #import "LMSpringboardItemView.h"
 #import "LMSpringboardView.h"
 #import "LoginViewController.h"
+#import "IGFeedViewController.h"
+#import "LMAppController.h"
 
 @interface ViewController () <UIGestureRecognizerDelegate>
 
@@ -83,13 +85,17 @@
 
 - (void)LM_iconTapped:(UITapGestureRecognizer*)sender
 {
-  UIView* item = sender.view;
-  while(item != nil && [item isKindOfClass:[LMSpringboardItemView class]] == NO)
-    item = item.superview;
-  [[self customView] launchAppItem:(LMSpringboardItemView*)item];
-  [UIView animateWithDuration:0.5 animations:^{
-    [self setNeedsStatusBarAppearanceUpdate];
-  }];
+    LMSpringboardItemView *item = (LMSpringboardItemView*) [(UIGestureRecognizer *)sender view];
+    
+    NSLog(@"title is %@", item.label.text);
+    
+    UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [aFlowLayout setItemSize:CGSizeMake(200, 140)];
+    [aFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    IGFeedViewController *ig = [[IGFeedViewController alloc] init];
+    ig.mediaList = [[NSArray alloc] initWithArray:[[LMAppController sharedInstance] mediaArray]];
+    ig.goToCellNumber = [item.bundleIdentifier integerValue];
+    [self presentViewController:ig animated:YES completion:nil];
 }
 
 #pragma mark - UIViewController
@@ -122,6 +128,7 @@
   
   for(LMSpringboardItemView* item in [self springboard].itemViews)
   {
+      NSLog(@"added tap recognizer");
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(LM_iconTapped:)];
     tap.numberOfTapsRequired = 1;
     tap.delegate = self;
@@ -139,6 +146,7 @@
     [items addObject:button2];
     [toolbar setItems:items animated:NO];
     [self.view addSubview:toolbar];
+    
 }
 
 -(void) login
@@ -166,7 +174,26 @@
 -(void) reloadData
 {
     NSLog(@"reloading data");
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(addCustomGestures)
+                                                 name:@"displayReady"
+                                               object:nil];
+
     [[self customView] reloadMedia];
 }
 
+-(void) addCustomGestures
+{
+    NSLog(@"add custom gestures");
+    
+    for(LMSpringboardItemView* item in [self springboard].itemViews)
+    {
+        NSLog(@"added tap recognizer");
+        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(LM_iconTapped:)];
+        tap.numberOfTapsRequired = 1;
+        tap.delegate = self;
+        [item addGestureRecognizer:tap];
+    }
+
+}
 @end

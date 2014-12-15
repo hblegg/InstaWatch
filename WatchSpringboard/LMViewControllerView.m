@@ -27,48 +27,7 @@
 
 - (void)launchAppItem:(LMSpringboardItemView*)item
 {
-  if(_isAppLaunched == NO)
-  {
-    _isAppLaunched = YES;
 
-    _lastLaunchedItem = item;
-    
-    CGPoint pointInSelf = [self convertPoint:item.icon.center fromView:item];
-    CGFloat dx = pointInSelf.x-_appView.center.x;
-    CGFloat dy = pointInSelf.y-_appView.center.y;
-    
-    double appScale = 60*item.scale/MIN(_appView.bounds.size.width,_appView.bounds.size.height);
-    _appView.transform = CGAffineTransformScale(CGAffineTransformMakeTranslation(dx, dy), appScale,appScale);
-    _appView.alpha = 1;
-    _appView.maskView = _appLaunchMaskView;
-    
-    _appLaunchMaskView.transform = CGAffineTransformMakeScale(0.01, 0.01);
-    
-    double springboardScale = MIN(self.bounds.size.width,self.bounds.size.height)/(60*item.scale);
-    
-    double maskScale = MAX(self.bounds.size.width,self.bounds.size.height)/(60*item.scale)*1.2*item.scale;
-    
-    [UIView animateWithDuration:0.5 animations:^{
-      _appView.transform = CGAffineTransformIdentity;
-      _appView.alpha = 1;
-      
-      _appLaunchMaskView.transform = CGAffineTransformMakeScale(maskScale,maskScale);
-      
-      _springboard.transform = CGAffineTransformTranslate(CGAffineTransformMakeScale(springboardScale,springboardScale), -dx, -dy);
-      _springboard.alpha = 0;
-    } completion:^(BOOL finished) {
-      _appView.maskView = nil;
-      _appLaunchMaskView.transform = CGAffineTransformIdentity;
-      
-      _springboard.transform = CGAffineTransformIdentity;
-      _springboard.alpha = 1;
-      NSUInteger index = [_springboard indexOfItemClosestToPoint:[_springboard convertPoint:pointInSelf fromView:self]];
-      [_springboard centerOnIndex:index zoomScale:_springboard.zoomScale animated:NO];
-		
-		
-	  [[LMAppController sharedInstance] openAppWithBundleIdentifier:item.bundleIdentifier];
-    }];
-  }
 }
 
 - (void)quitApp
@@ -251,6 +210,7 @@
         LMSpringboardItemView* item = [[LMSpringboardItemView alloc] init];
         item.bundleIdentifier = @"";
         [item setTitle:[app.caption text]];
+        item.bundleIdentifier = [NSString stringWithFormat:@"%ld", (long)index];
         item.icon.image = images[index++];
         [itemViews addObject:item];
     }
@@ -268,6 +228,11 @@
     _respringButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.activtyView stopAnimating];
     self.activtyView.hidden = YES;
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"displayReady"
+     object:self];
+
 }
 
 @end
