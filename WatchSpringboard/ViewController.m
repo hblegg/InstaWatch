@@ -12,8 +12,8 @@
 #import "LMSpringboardItemView.h"
 #import "LMSpringboardView.h"
 #import "LoginViewController.h"
-#import "IGFeedViewController.h"
 #import "LMAppController.h"
+#import "IGTableViewController.h"
 
 @interface ViewController () <UIGestureRecognizerDelegate>
 
@@ -89,13 +89,21 @@
     
     NSLog(@"title is %@", item.label.text);
     
-    UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [aFlowLayout setItemSize:CGSizeMake(200, 140)];
+    /*UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+    // [aFlowLayout setItemSize:CGSizeMake(200, 140)];
     [aFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    IGFeedViewController *ig = [[IGFeedViewController alloc] init];
+    IGramCollectionViewController *ig = [[IGramCollectionViewController alloc] initWithCollectionViewLayout:aFlowLayout];
     ig.mediaList = [[NSArray alloc] initWithArray:[[LMAppController sharedInstance] mediaArray]];
     ig.goToCellNumber = [item.bundleIdentifier integerValue];
-    [self presentViewController:ig animated:YES completion:nil];
+    [self presentViewController:ig animated:YES completion:nil];*/
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"IGFeed" bundle:nil];
+    IGTableViewController *myController = [storyboard instantiateViewControllerWithIdentifier:@"igfeed"];
+    myController.mediaList = [[NSArray alloc] initWithArray:[[LMAppController sharedInstance] mediaArray]];
+    myController.goToCellNumber = [item.bundleIdentifier integerValue];
+   
+    [self.navigationController pushViewController:myController animated:YES];
+//    [self presentViewController:myController animated:YES completion:nil];
 }
 
 #pragma mark - UIViewController
@@ -109,6 +117,10 @@
   
   LMSpringboardView* springboard = [self springboard];
   [springboard centerOnIndex:0 zoomScale:springboard.zoomScale animated:NO];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -117,6 +129,10 @@
   
   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+
 }
 
 - (void)viewDidLoad
