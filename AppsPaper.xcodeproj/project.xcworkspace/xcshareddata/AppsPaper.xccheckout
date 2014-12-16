@@ -14,22 +14,26 @@
 		<string>https://github.com/hblegg/AppsPaper</string>
 		<key>992B731163FEFD07A672E6AE3F124AA7314EBA6D</key>
 		<string>https://github.com/hblegg/WatchIng</string>
+		<key>AFEF350098FFD223F8E07439DF5AE4D53A64A801</key>
+		<string>https://github.com/hblegg/WatchIng</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>AppsPaper.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>94BD19E1CA43732F522FA6BC78B46C612B125E40</key>
-		<string>../..</string>
+		<string>../../../AppsPaper</string>
 		<key>992B731163FEFD07A672E6AE3F124AA7314EBA6D</key>
 		<string>../../..</string>
+		<key>AFEF350098FFD223F8E07439DF5AE4D53A64A801</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/hblegg/AppsPaper</string>
+	<string>https://github.com/hblegg/WatchIng</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>94BD19E1CA43732F522FA6BC78B46C612B125E40</string>
+	<string>AFEF350098FFD223F8E07439DF5AE4D53A64A801</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -47,6 +51,14 @@
 			<string>94BD19E1CA43732F522FA6BC78B46C612B125E40</string>
 			<key>IDESourceControlWCCName</key>
 			<string>AppsPaper</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AFEF350098FFD223F8E07439DF5AE4D53A64A801</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WatchIng</string>
 		</dict>
 	</array>
 </dict>
