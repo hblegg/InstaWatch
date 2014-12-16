@@ -170,7 +170,8 @@
     NSLog(@"logging in");
     LoginViewController *login = [[LoginViewController alloc] init];
     login.collectionViewController = self;
-    [self presentViewController:login animated:YES completion:nil];
+    [self.navigationController pushViewController:login animated:YES];
+    //[self presentViewController:login animated:YES completion:nil];
 }
 
 -(void) logout
