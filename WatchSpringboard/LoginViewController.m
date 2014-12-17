@@ -62,10 +62,8 @@
             NSString *accessToken = [components lastObject];
             NSLog(@"ACCESS TOKEN = %@",accessToken);
             [[InstagramEngine sharedEngine] setAccessToken:accessToken];
-            
-            [self dismissViewControllerAnimated:YES completion:^{
-               [self.collectionViewController reloadData];
-            }];
+            self.collectionViewController.didLogin = YES;
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }
         return NO;
     }

@@ -120,6 +120,7 @@
     
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
+    [self reloadData];
 
 }
 
@@ -138,7 +139,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
+    self.didLogin = NO;
   [[self customView].respringButton addTarget:self action:@selector(LM_respringTapped:) forControlEvents:UIControlEventTouchUpInside];
   [self springboard].alpha = 0;
   
@@ -190,6 +191,9 @@
 
 -(void) reloadData
 {
+    if (!self.didLogin)
+        return;
+    
     NSLog(@"reloading data");
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(addCustomGestures)
@@ -197,6 +201,7 @@
                                                object:nil];
 
     [[self customView] reloadMedia];
+    self.didLogin = NO;
 }
 
 -(void) addCustomGestures

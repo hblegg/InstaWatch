@@ -11,6 +11,6 @@
 @interface ViewController : UIViewController
 
 -(void) reloadData;
-
+@property(nonatomic) BOOL didLogin;
 @end
 
