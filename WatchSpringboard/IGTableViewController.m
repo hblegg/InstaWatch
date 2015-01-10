@@ -12,12 +12,22 @@
 #import "InstagramUser.h"
 #import <QuartzCore/QuartzCore.h>
 #import "InstagramComment.h"
+#import "InstagramEngine.h"
+#import "CommentsTableViewController.h"
 
 @interface IGTableViewController ()
-
+@property (nonatomic, strong) InstagramUser *selfUser;
+@property (nonatomic, strong) NSMutableArray *likedMedia;
 @end
 
 @implementation IGTableViewController
+
+-(NSMutableArray*) likedMedia
+{
+    if (!_likedMedia)
+        _likedMedia = [[NSMutableArray alloc] init];
+    return _likedMedia;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,8 +35,24 @@
     self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
     
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.goToCellNumber inSection:0]
-                     atScrollPosition:UITableViewScrollPositionMiddle animated:YES];}
+                     atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    
+    [[InstagramEngine sharedEngine] getSelfUserDetailsWithSuccess:^(InstagramUser *userDetail) {
+        self.selfUser = userDetail;
+    } failure:nil];
+    
+    [self refreshLikeList];
 
+}
+
+-(void) refreshLikeList
+{
+    [[InstagramEngine sharedEngine] getMediaLikedBySelfWithSuccess:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
+        self.likedMedia = [NSMutableArray arrayWithArray:media];
+        [self.tableView reloadData];
+    } failure:nil];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -44,6 +70,10 @@
     return [self.mediaList count];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 485;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image" forIndexPath:indexPath];
@@ -117,10 +147,54 @@
      
      } failure:nil];
     
+    UIButton *likeButton = (UIButton*)[cell viewWithTag:50];
+    UIButton *commentButton = (UIButton*)[cell viewWithTag:51];
+    
+    [likeButton addTarget:self action:@selector(likeTapped:) forControlEvents:UIControlEventTouchUpInside];
+
+    [commentButton addTarget:self action:@selector(commentTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    if ([self didLikeMedia:media])
+    {
+        NSLog(@"did like media");
+        likeButton.titleLabel.textColor = [UIColor redColor];
+    }
+    else
+        likeButton.titleLabel.textColor = [UIColor grayColor];
     return cell;
 }
 
+-(void) likeTapped:(id) sender
+{
+    UITableViewCell *clickedCell = (UITableViewCell*)[[sender superview] superview];
+    NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
+    NSLog(@"indexPath = %ld", (long)clickedButtonPath.row);
+    InstagramMedia *media = self.mediaList[clickedButtonPath.row];
+    NSString *id = [media Id];
+    if (![self didLikeMedia:media])
+    {
+        [[InstagramEngine sharedEngine] likeMedia:id withSuccess:nil failure:nil];
+        [[InstagramEngine sharedEngine] likeMedia:id withSuccess:^{
+            NSLog(@"like worked");
+            [self refreshLikeList];
+        } failure:^(NSError *error) {
+            NSLog(@"like failed");
+        }];
+    }
+    else
+    {
+        [[InstagramEngine sharedEngine] unlikeMedia:id withSuccess:^{
+            [self refreshLikeList];
+        } failure:nil];
+    }
+}
 
+-(void) commentTapped:(id) sender
+{
+    UITableViewCell *clickedCell = (UITableViewCell*)[[sender superview] superview];
+    NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
+    NSLog(@"indexPath = %ld", (long)clickedButtonPath.row);
+}
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -128,4 +202,28 @@
     return YES;
 }
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    CommentsTableViewController *dest = (CommentsTableViewController*)[segue destinationViewController];
+    // NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+    UITableViewCell *clickedCell = (UITableViewCell*)[[sender superview] superview];
+    NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
+    NSLog(@"indexPath = %ld", (long)clickedButtonPath.row);
+
+    [dest setMedia:self.mediaList[clickedButtonPath.row]];
+}
+
+-(BOOL) didLikeMedia:(InstagramMedia*) media
+{
+    for (InstagramMedia *likedMedia in self.likedMedia)
+    {
+        if ([likedMedia.Id isEqualToString:media.Id])
+            return YES;
+    }
+
+    return NO;
+}
 @end

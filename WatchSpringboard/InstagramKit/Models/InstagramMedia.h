@@ -55,4 +55,8 @@
 @property (nonatomic, readonly) NSURL *standardResolutionVideoURL;
 @property (nonatomic, readonly) CGSize standardResolutionVideoFrameSize;
 
+@property (nonatomic) BOOL selfLiked;
+
+-(BOOL) didSelfLikeMedia:(NSString*) username;
+
 @end

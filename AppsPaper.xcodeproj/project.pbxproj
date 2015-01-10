@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		297C72951A60424C00274179 /* CommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C72941A60424C00274179 /* CommentsTableViewController.m */; };
 		29AD93571A3A5B060020E22A /* InstagramEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD93451A3A5B060020E22A /* InstagramEngine.m */; };
 		29AD93581A3A5B060020E22A /* InstagramKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29AD93471A3A5B060020E22A /* InstagramKit.plist */; };
 		29AD93591A3A5B060020E22A /* IKUserInPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD934A1A3A5B060020E22A /* IKUserInPhoto.m */; };
@@ -95,6 +96,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		297C72931A60424C00274179 /* CommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewController.h; sourceTree = "<group>"; };
+		297C72941A60424C00274179 /* CommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewController.m; sourceTree = "<group>"; };
 		29AD93441A3A5B060020E22A /* InstagramEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramEngine.h; sourceTree = "<group>"; };
 		29AD93451A3A5B060020E22A /* InstagramEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramEngine.m; sourceTree = "<group>"; };
 		29AD93461A3A5B060020E22A /* InstagramKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramKit.h; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 				29AD93861A3A72930020E22A /* LoginViewController.m */,
 				29AD94661A3F8A1F0020E22A /* IGTableViewController.h */,
 				29AD94671A3F8A1F0020E22A /* IGTableViewController.m */,
+				297C72931A60424C00274179 /* CommentsTableViewController.h */,
+				297C72941A60424C00274179 /* CommentsTableViewController.m */,
 				29AD94691A3F8A390020E22A /* IGFeed.storyboard */,
 				29AD93871A3A72930020E22A /* LoginViewController.xib */,
 				A073BBBF19F9C7AB0068D6A6 /* Main.storyboard */,
@@ -590,6 +595,7 @@
 				29AD937A1A3A5BFB0020E22A /* AFSecurityPolicy.m in Sources */,
 				29AD935C1A3A5B060020E22A /* InstagramModel.m in Sources */,
 				29AD935E1A3A5B060020E22A /* InstagramTag.m in Sources */,
+				297C72951A60424C00274179 /* CommentsTableViewController.m in Sources */,
 				29AD935A1A3A5B060020E22A /* InstagramComment.m in Sources */,
 				29AD93771A3A5BFB0020E22A /* AFHTTPRequestOperationManager.m in Sources */,
 				A073BBDE19F9C8220068D6A6 /* LMSpringboardView.m in Sources */,

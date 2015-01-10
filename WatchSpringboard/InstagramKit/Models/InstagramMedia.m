@@ -101,4 +101,17 @@
     _standardResolutionVideoFrameSize = CGSizeMake([standardResInfo[kWidth] floatValue], [standardResInfo[kHeight] floatValue]);
 }
 
+-(BOOL) didSelfLikeMedia:(NSString*)username
+{
+    // loop through like array and determine if users are the same
+    NSLog(@"mlikes = %@ and user name is %@", mLikes, username);
+    for (InstagramUser *user in mLikes)
+    {
+        NSLog(@"mlikes = %@ and user name is %@", [user username], username);
+        if ([[user username] isEqualToString:username])
+             return YES;
+    }
+    return NO;
+}
+
 @end
