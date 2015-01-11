@@ -34,7 +34,7 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@&response_type=token&scope=%@", configuration[kInstagramKitAuthorizationUrlConfigurationKey], configuration[kInstagramKitAppClientIdConfigurationKey], configuration[kInstagramKitAppRedirectUrlConfigurationKey], scopeString]];
     
     [self.mWebView loadRequest:[NSURLRequest requestWithURL:url]];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {

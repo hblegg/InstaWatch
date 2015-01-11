@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ALRadialMenu.h"
 
 @interface ViewController : UIViewController
 
 -(void) reloadData;
 @property(nonatomic) BOOL didLogin;
+@property (strong, nonatomic) ALRadialMenu *radialMenu;
+@property (strong, nonatomic) ALRadialMenu *socialMenu;
+@property (strong, nonatomic) IBOutlet UIButton *button;
+@property (weak, nonatomic) IBOutlet UIButton *socialButton;
+
 @end
 
