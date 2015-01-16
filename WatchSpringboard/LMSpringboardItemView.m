@@ -113,7 +113,7 @@ static double const kLMSpringboardItemViewSmallThreshold = 0.75;
     
   _label.center = CGPointMake(size.width*0.5, size.height+4);
 
-  float scale = 60/size.width;
+  float scale = 120/size.width;
   _icon.transform = CGAffineTransformMakeScale(scale, scale);
   _visualEffectView.transform = _icon.transform;
 }

@@ -41,15 +41,15 @@
     CGFloat dx = pointInSelf.x-_appView.center.x;
     CGFloat dy = pointInSelf.y-_appView.center.y;
     
-    double appScale = 60*_lastLaunchedItem.scale/MIN(_appView.bounds.size.width,_appView.bounds.size.height);
+    double appScale = 120*_lastLaunchedItem.scale/MIN(_appView.bounds.size.width,_appView.bounds.size.height);
     CGAffineTransform appTransform = CGAffineTransformScale(CGAffineTransformMakeTranslation(dx, dy), appScale, appScale);
     _appView.maskView = _appLaunchMaskView;
     
-    double springboardScale = MIN(self.bounds.size.width,self.bounds.size.height)/(60*_lastLaunchedItem.scale);
+    double springboardScale = MIN(self.bounds.size.width,self.bounds.size.height)/(120*_lastLaunchedItem.scale);
     _springboard.transform = CGAffineTransformTranslate(CGAffineTransformMakeScale(springboardScale,springboardScale), -dx, -dy);
     _springboard.alpha = 0;
     
-    double maskScale = MAX(self.bounds.size.width,self.bounds.size.height)/(60*_lastLaunchedItem.scale)*1.2*_lastLaunchedItem.scale;
+    double maskScale = MAX(self.bounds.size.width,self.bounds.size.height)/(120*_lastLaunchedItem.scale)*1.2*_lastLaunchedItem.scale;
     
     _appLaunchMaskView.transform = CGAffineTransformMakeScale(maskScale,maskScale);
     
@@ -95,14 +95,14 @@
 	  
     // pre-render the known icons
     NSMutableArray* images = [NSMutableArray array];
-    UIBezierPath* clipPath = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(CGRectMake(0, 0, 60, 60), 0.5,0.5)];
+    UIBezierPath* clipPath = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(CGRectMake(0, 0, 120, 120), 0.5,0.5)];
     for(LMApp* app in apps)
     {
       UIImage* image = app.icon;
       
-      UIGraphicsBeginImageContextWithOptions(CGSizeMake(60, 60), NO, [UIScreen mainScreen].scale);
+      UIGraphicsBeginImageContextWithOptions(CGSizeMake(120, 120), NO, [UIScreen mainScreen].scale);
       [clipPath addClip];
-      [image drawInRect:CGRectMake(0, 0, 60, 60)];
+      [image drawInRect:CGRectMake(0, 0, 120, 120)];
       UIImage* renderedImage = UIGraphicsGetImageFromCurrentImageContext();
       UIGraphicsEndImageContext();
       
@@ -159,8 +159,8 @@
   
   _appLaunchMaskView.center  =CGPointMake(size.width*0.5, size.height*0.5+statusFrame.size.height);
   
-  _respringButton.bounds = CGRectMake(0, 0, 60, 60);
-  _respringButton.center = CGPointMake(size.width*0.5, size.height-60*0.5);
+  _respringButton.bounds = CGRectMake(0, 0, 120, 120);
+  _respringButton.center = CGPointMake(size.width*0.5, size.height-120*0.5);
 }
 
 - (void)reloadMedia
@@ -189,15 +189,15 @@
     
     // pre-render the known icons
     NSMutableArray* images = [NSMutableArray array];
-    UIBezierPath* clipPath = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(CGRectMake(0, 0, 60, 60), 0.5,0.5)];
+    UIBezierPath* clipPath = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(CGRectMake(0, 0, 120, 120), 0.5,0.5)];
     
     for(InstagramMedia* app in [[LMAppController sharedInstance] mediaArray])
     {
         UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:app.thumbnailURL]];
         
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(60, 60), NO, [UIScreen mainScreen].scale);
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(120, 120), NO, [UIScreen mainScreen].scale);
         [clipPath addClip];
-        [image drawInRect:CGRectMake(0, 0, 60, 60)];
+        [image drawInRect:CGRectMake(0, 0, 120, 120)];
         UIImage* renderedImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         

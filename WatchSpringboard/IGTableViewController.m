@@ -14,10 +14,14 @@
 #import "InstagramComment.h"
 #import "InstagramEngine.h"
 #import "CommentsTableViewController.h"
+#import "JTSImageInfo.h"
+#import "JTSImageViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface IGTableViewController ()
+@interface IGTableViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) InstagramUser *selfUser;
 @property (nonatomic, strong) NSMutableArray *likedMedia;
+@property (nonatomic, strong) UIImageView *playButton;
 @end
 
 @implementation IGTableViewController
@@ -76,10 +80,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image" forIndexPath:indexPath];
-    
-    cell.backgroundColor = [UIColor whiteColor];
+    UITableViewCell *cell;
     InstagramMedia *media = [self.mediaList objectAtIndex:indexPath.row];
+    if (![media isVideo])
+        cell = [tableView dequeueReusableCellWithIdentifier:@"image" forIndexPath:indexPath];
+    else
+        cell = [tableView dequeueReusableCellWithIdentifier:@"image" forIndexPath:indexPath];
+    
+    if (![media isVideo])
+    cell.backgroundColor = [UIColor whiteColor];
+    
     NSURL * url = [media lowResolutionImageURL];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -89,13 +99,33 @@
     
     UIImageView *iv = (UIImageView*)[cell viewWithTag:3];
     
+
     [iv setImageWithURLRequest:request
      placeholderImage:placeholderImage
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
          UIImageView *imv = (UIImageView*)[weakCell viewWithTag:3];
      imv.image = image;
+         UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellImageTapped:)];
+         tapped.numberOfTapsRequired = 1;
+         tapped.delegate = self;
+         imv.userInteractionEnabled = YES;
+         [imv addGestureRecognizer:tapped];
+
      [weakCell setNeedsLayout];
-     
+         if ([media isVideo])
+         {
+             _playButton = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"play_button"]];
+             _playButton.center = imv.center;
+             [imv addSubview:_playButton];
+             [imv bringSubviewToFront:_playButton];
+
+
+         }
+         else
+         {
+             [[imv subviews]
+              makeObjectsPerformSelector:@selector(removeFromSuperview)];
+         }
      }
                        failure:nil];
     
@@ -208,12 +238,11 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     CommentsTableViewController *dest = (CommentsTableViewController*)[segue destinationViewController];
-    // NSIndexPath *path = [self.tableView indexPathForSelectedRow];
     UITableViewCell *clickedCell = (UITableViewCell*)[[sender superview] superview];
     NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
-    NSLog(@"indexPath = %ld", (long)clickedButtonPath.row);
 
     [dest setMedia:self.mediaList[clickedButtonPath.row]];
+    
 }
 
 -(BOOL) didLikeMedia:(InstagramMedia*) media
@@ -225,5 +254,50 @@
     }
 
     return NO;
+}
+
+-(void)cellImageTapped:(id)sender
+{
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
+    CGPoint point = [tap locationInView:self.tableView];
+    
+    NSIndexPath *theIndexPath = [self.tableView indexPathForRowAtPoint:point];
+    InstagramMedia *media = [self.mediaList objectAtIndex:theIndexPath.row];
+    if (![media isVideo])
+    {
+    NSLog(@"index path is %@", theIndexPath);
+    
+    UITableViewCell *clickedCell = [self.tableView cellForRowAtIndexPath:theIndexPath];
+    
+    UIImageView *iv = (UIImageView*)[clickedCell viewWithTag:3];
+    
+    // Create image info
+    JTSImageInfo *imageInfo = [[JTSImageInfo alloc] init];
+    imageInfo.image = iv.image;
+    imageInfo.referenceRect = iv.frame;
+    imageInfo.referenceView = iv.superview;
+    imageInfo.referenceContentMode = iv.contentMode;
+    imageInfo.referenceCornerRadius = iv.layer.cornerRadius;
+    
+    // Setup view controller
+    JTSImageViewController *imageViewer = [[JTSImageViewController alloc]
+                                           initWithImageInfo:imageInfo
+                                           mode:JTSImageViewControllerMode_Image
+                                           backgroundStyle:JTSImageViewControllerBackgroundOption_Scaled];
+    
+    // Present the view controller.
+    [imageViewer showFromViewController:self transition:JTSImageViewControllerTransition_FromOriginalPosition];
+    }
+    else
+    {
+        MPMoviePlayerViewController *videoPlayerView = [[MPMoviePlayerViewController alloc] initWithContentURL:[media lowResolutionVideoURL]];
+        videoPlayerView.moviePlayer.fullscreen=FALSE;
+        
+        [self presentMoviePlayerViewControllerAnimated:videoPlayerView];
+        [videoPlayerView.moviePlayer play];
+
+        
+    }
+
 }
 @end

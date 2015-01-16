@@ -29,6 +29,12 @@
 		297C72CC1A62A39D00274179 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 297C72B61A62A39D00274179 /* twitter.png */; };
 		297C72CD1A62A39D00274179 /* vimeo.png in Resources */ = {isa = PBXBuildFile; fileRef = 297C72B71A62A39D00274179 /* vimeo.png */; };
 		297C72CE1A62A39D00274179 /* youtube.png in Resources */ = {isa = PBXBuildFile; fileRef = 297C72B81A62A39D00274179 /* youtube.png */; };
+		297C72ED1A6857EE00274179 /* JTSAnimatedGIFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C72E21A6857EE00274179 /* JTSAnimatedGIFUtility.m */; };
+		297C72EE1A6857EE00274179 /* JTSImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C72E41A6857EE00274179 /* JTSImageInfo.m */; };
+		297C72EF1A6857EE00274179 /* JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C72E61A6857EE00274179 /* JTSImageViewController.m */; };
+		297C72F01A6857EE00274179 /* JTSSimpleImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C72E81A6857EE00274179 /* JTSSimpleImageDownloader.m */; };
+		297C72F11A6857EE00274179 /* UIApplication+JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C72EA1A6857EE00274179 /* UIApplication+JTSImageViewController.m */; };
+		297C72F21A6857EE00274179 /* UIImage+JTSImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C72EC1A6857EE00274179 /* UIImage+JTSImageEffects.m */; };
 		29AD93571A3A5B060020E22A /* InstagramEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD93451A3A5B060020E22A /* InstagramEngine.m */; };
 		29AD93581A3A5B060020E22A /* InstagramKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29AD93471A3A5B060020E22A /* InstagramKit.plist */; };
 		29AD93591A3A5B060020E22A /* IKUserInPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD934A1A3A5B060020E22A /* IKUserInPhoto.m */; };
@@ -145,6 +151,18 @@
 		297C72B61A62A39D00274179 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		297C72B71A62A39D00274179 /* vimeo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo.png; sourceTree = "<group>"; };
 		297C72B81A62A39D00274179 /* youtube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube.png; sourceTree = "<group>"; };
+		297C72E11A6857EE00274179 /* JTSAnimatedGIFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSAnimatedGIFUtility.h; sourceTree = "<group>"; };
+		297C72E21A6857EE00274179 /* JTSAnimatedGIFUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSAnimatedGIFUtility.m; sourceTree = "<group>"; };
+		297C72E31A6857EE00274179 /* JTSImageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSImageInfo.h; sourceTree = "<group>"; };
+		297C72E41A6857EE00274179 /* JTSImageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSImageInfo.m; sourceTree = "<group>"; };
+		297C72E51A6857EE00274179 /* JTSImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSImageViewController.h; sourceTree = "<group>"; };
+		297C72E61A6857EE00274179 /* JTSImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSImageViewController.m; sourceTree = "<group>"; };
+		297C72E71A6857EE00274179 /* JTSSimpleImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSSimpleImageDownloader.h; sourceTree = "<group>"; };
+		297C72E81A6857EE00274179 /* JTSSimpleImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSSimpleImageDownloader.m; sourceTree = "<group>"; };
+		297C72E91A6857EE00274179 /* UIApplication+JTSImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+JTSImageViewController.h"; sourceTree = "<group>"; };
+		297C72EA1A6857EE00274179 /* UIApplication+JTSImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+JTSImageViewController.m"; sourceTree = "<group>"; };
+		297C72EB1A6857EE00274179 /* UIImage+JTSImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JTSImageEffects.h"; sourceTree = "<group>"; };
+		297C72EC1A6857EE00274179 /* UIImage+JTSImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JTSImageEffects.m"; sourceTree = "<group>"; };
 		29AD93441A3A5B060020E22A /* InstagramEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramEngine.h; sourceTree = "<group>"; };
 		29AD93451A3A5B060020E22A /* InstagramEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramEngine.m; sourceTree = "<group>"; };
 		29AD93461A3A5B060020E22A /* InstagramKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramKit.h; sourceTree = "<group>"; };
@@ -322,6 +340,25 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		297C72E01A6857EE00274179 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				297C72E11A6857EE00274179 /* JTSAnimatedGIFUtility.h */,
+				297C72E21A6857EE00274179 /* JTSAnimatedGIFUtility.m */,
+				297C72E31A6857EE00274179 /* JTSImageInfo.h */,
+				297C72E41A6857EE00274179 /* JTSImageInfo.m */,
+				297C72E51A6857EE00274179 /* JTSImageViewController.h */,
+				297C72E61A6857EE00274179 /* JTSImageViewController.m */,
+				297C72E71A6857EE00274179 /* JTSSimpleImageDownloader.h */,
+				297C72E81A6857EE00274179 /* JTSSimpleImageDownloader.m */,
+				297C72E91A6857EE00274179 /* UIApplication+JTSImageViewController.h */,
+				297C72EA1A6857EE00274179 /* UIApplication+JTSImageViewController.m */,
+				297C72EB1A6857EE00274179 /* UIImage+JTSImageEffects.h */,
+				297C72EC1A6857EE00274179 /* UIImage+JTSImageEffects.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		29AD93421A3A5B060020E22A /* InstagramKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +451,7 @@
 		A073BBB419F9C7AB0068D6A6 /* WatchSpringboard */ = {
 			isa = PBXGroup;
 			children = (
+				297C72E01A6857EE00274179 /* Source */,
 				297C72991A62A39D00274179 /* ALRadial */,
 				29AD93601A3A5BFB0020E22A /* AFNetworking */,
 				29AD93421A3A5B060020E22A /* InstagramKit */,
@@ -707,7 +745,9 @@
 				A073BBBE19F9C7AB0068D6A6 /* ViewController.m in Sources */,
 				B2E377B919FF127A00A10D5E /* LMAppController.m in Sources */,
 				A089811319FAF4EC00034E0B /* LMViewControllerView.m in Sources */,
+				297C72F21A6857EE00274179 /* UIImage+JTSImageEffects.m in Sources */,
 				29AD935D1A3A5B060020E22A /* InstagramPaginationInfo.m in Sources */,
+				297C72EF1A6857EE00274179 /* JTSImageViewController.m in Sources */,
 				29AD937A1A3A5BFB0020E22A /* AFSecurityPolicy.m in Sources */,
 				29AD935C1A3A5B060020E22A /* InstagramModel.m in Sources */,
 				29AD935E1A3A5B060020E22A /* InstagramTag.m in Sources */,
@@ -719,13 +759,17 @@
 				B2E377B819FF127A00A10D5E /* LMApp.m in Sources */,
 				29AD94681A3F8A1F0020E22A /* IGTableViewController.m in Sources */,
 				297C72BA1A62A39D00274179 /* ALAppDelegate.m in Sources */,
+				297C72F11A6857EE00274179 /* UIApplication+JTSImageViewController.m in Sources */,
 				29AD93591A3A5B060020E22A /* IKUserInPhoto.m in Sources */,
 				29AD93571A3A5B060020E22A /* InstagramEngine.m in Sources */,
 				29AD935B1A3A5B060020E22A /* InstagramMedia.m in Sources */,
+				297C72F01A6857EE00274179 /* JTSSimpleImageDownloader.m in Sources */,
 				A073BBBB19F9C7AB0068D6A6 /* AppDelegate.m in Sources */,
 				A073BBB819F9C7AB0068D6A6 /* main.m in Sources */,
+				297C72EE1A6857EE00274179 /* JTSImageInfo.m in Sources */,
 				29AD937C1A3A5BFB0020E22A /* AFURLRequestSerialization.m in Sources */,
 				29AD93761A3A5BFB0020E22A /* AFHTTPRequestOperation.m in Sources */,
+				297C72ED1A6857EE00274179 /* JTSAnimatedGIFUtility.m in Sources */,
 				29AD937D1A3A5BFB0020E22A /* AFURLResponseSerialization.m in Sources */,
 				29AD935F1A3A5B060020E22A /* InstagramUser.m in Sources */,
 			);

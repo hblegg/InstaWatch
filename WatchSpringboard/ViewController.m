@@ -169,7 +169,7 @@
     self.socialMenu = [[ALRadialMenu alloc] init];
     self.socialMenu.delegate = self;
 
-    self.button = [[UIButton alloc] initWithFrame:CGRectMake(30, 30, 30, 30)];
+    self.button = [[UIButton alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height-60, 30, 30)];
     [self.button addTarget:self action:@selector(plusTapped:) forControlEvents:UIControlEventTouchUpInside];
 
     [self.button setBackgroundImage:[UIImage imageNamed:@"addthis500.png"]
@@ -237,11 +237,10 @@
 
 #pragma mark - radial menu delegate methods
 - (NSInteger) numberOfItemsInRadialMenu:(ALRadialMenu *)radialMenu {
-    //FIXME: dipshit, change one of these variable names
     if (radialMenu == self.radialMenu) {
         return 9;
     } else if (radialMenu == self.socialMenu) {
-        return 2;
+        return 3;
     }
     
     return 0;
@@ -252,7 +251,7 @@
     if (radialMenu == self.radialMenu) {
         return 360;
     } else if (radialMenu == self.socialMenu) {
-        return 90;
+        return -90;
     }
     
     return 0;
@@ -299,7 +298,7 @@
         } else if (index == 2) {
             [button setImage:[UIImage imageNamed:@"login_red_icon"] forState:UIControlStateNormal];
         } else if (index == 3) {
-            [button setImage:[UIImage imageNamed:@"facebook500"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
         }
     }
     
@@ -321,7 +320,7 @@
         } else if (index == 2) {
             [self login];
         } else if (index == 3) {
-            NSLog(@"facebook");
+            [[self customView] reloadMedia];
         }
     }
     

@@ -86,6 +86,18 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imagevideo" rowHeight="485" id="Jft-ZR-UFd" userLabel="image">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jft-ZR-UFd" id="0mt-li-Jjp">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view tag="40" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zH1-Zp-lEX">
+                                            <rect key="frame" x="53" y="8" width="215" height="200"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="sco-79-MqO" id="18C-7c-WTn"/>
@@ -96,7 +108,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="icU-Cz-zRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="248"/>
+            <point key="canvasLocation" x="1034" y="247"/>
         </scene>
         <!--Comments Table View Controller-->
         <scene sceneID="PmA-EM-ba7">

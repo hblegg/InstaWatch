@@ -52,8 +52,8 @@
 {
 	NSArray* allInstalledApplications = [_workspace allInstalledApplications];
 	NSMutableArray* applications = [NSMutableArray arrayWithCapacity:allInstalledApplications.count];
-    
-    [[InstagramEngine sharedEngine] getSelfFeedWithCount:50 maxId:self.currentPaginationInfo.nextMaxId success:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
+    //self.currentPaginationInfo.nextMaxId
+    [[InstagramEngine sharedEngine] getSelfFeedWithCount:50 maxId:nil success:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
         self.currentPaginationInfo = paginationInfo;
         [self.mediaArray removeAllObjects];
         
